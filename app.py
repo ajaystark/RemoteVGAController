@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 from flask_socketio import SocketIO, emit
-from flask import flash, redirect, render_template, request, session, abort
+from flask import flash, redirect, render_template, request, session, abort,send_from_directory
 import os
 
 app = Flask(__name__)
@@ -40,19 +40,29 @@ def upload_file():
    return render_template('first.html')
 
 
-UPLOAD_FOLDER = '/home/skullcrush3rx/Desktop/RemoteVGAController/static'
+UPLOAD_FOLDER = '/Users/ajay/vga/static'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
 
 @app.route('/save', methods = ['GET', 'POST'])
 def function():
     if request.method == 'POST':
         f = request.files['file']
-        #f.save(f.filename)
-        f.save(os.path.join(app.config['UPLOAD_FOLDER'], f.filename))
-        query=f.filename
-    return render_template('second.html',query=f.filename)
+        f.save(os.path.join(app.config['UPLOAD_FOLDER'],f.filename))
+        
+
+        file=open("name.txt","w")
+        file.write(f.filename)
+        file.close()
+    return render_template("first.html")
 
 
+@app.route("/client")
+def client():
+    file=open("name.txt","r")
+    temp=file.read()
+    # return send_from_directory(app.config['UPLOAD_FOLDER'],filename=temp)
+    return render_template("second.html",query=temp)
 
 
 if __name__ == "__main__":

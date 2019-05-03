@@ -10,3 +10,9 @@
 {
 
 }
+.boxi{
+	height: 50px;
+	width:50px;
+	color:cyan;
+	border-radius: 5%;
+}

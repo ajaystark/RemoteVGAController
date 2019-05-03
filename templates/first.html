@@ -1,12 +1,20 @@
 <html>
 	<head>
-		<link rel="stylesheet" type="text/css" href="style.css">
-	</head>
+      <link rel="stylesheet" type="text/css" href="style.css">
+      
+   </head>
+  
    <body>
-      <form action = "http://0.0.0.0:5000/save" method = "POST" 
+      <form action = "http://0.0.0.0:5000/save" id="upload_form" method = "POST" 
          enctype = "multipart/form-data">
          <input type = "file" name = "file" />
-         <input type = "submit"/>
       </form>
+
+      <script type="text/javascript">
+         document.getElementById("upload_form").onchange = function() {
+             // submitting the form
+             document.getElementById("upload_form").submit();
+         };
+       </script>
    </body>
 </html>
