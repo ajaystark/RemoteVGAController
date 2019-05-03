@@ -43,14 +43,23 @@ def upload_file():
 UPLOAD_FOLDER = '/home/skullcrush3rx/Desktop/RemoteVGAController/static'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
+
+temp=""
+
 @app.route('/save', methods = ['GET', 'POST'])
 def function():
     if request.method == 'POST':
         f = request.files['file']
-        #f.save(f.filename)
         f.save(os.path.join(app.config['UPLOAD_FOLDER'], f.filename))
         query=f.filename
+        temp=query
     return render_template('second.html',query=f.filename)
+#     # return tempo()
+
+# @app.route('/tempo')
+# def tempo():
+#     return render_template("second.html",query=temp)
+#     # return temp
 
 
 
