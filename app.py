@@ -39,13 +39,18 @@ def typedRender():
 def upload_file():
    return render_template('first.html')
 
+
+UPLOAD_FOLDER = '/home/skullcrush3rx/Desktop/RemoteVGAController/static'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
 @app.route('/save', methods = ['GET', 'POST'])
 def function():
-	if request.method == 'POST':
-		f = request.files['file']
-		f.save(f.filename)
-		query=f.filename
-	return render_template('second.html',query=f.filename)
+    if request.method == 'POST':
+        f = request.files['file']
+        #f.save(f.filename)
+        f.save(os.path.join(app.config['UPLOAD_FOLDER'], f.filename))
+        query=f.filename
+    return render_template('second.html',query=f.filename)
 
 
 
