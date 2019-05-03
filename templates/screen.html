@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Screen Share - WebRTC</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+        crossorigin="anonymous"></script>
+    <style>
+        #video {
+        border: 1px solid #999;
+        width: 98%;
+        max-width: 860px;
+        }
+
+        .error {
+        color: red;
+        }
+
+        .warn {
+        color: orange;
+        }
+
+        .info {
+        color: darkgreen;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        <button id="start">Start Capture</button>
+        &nbsp;
+        <button id="stop">Stop Capture</button>
+    </p>
+    <video id="video" autoplay></video>
+    <p id="log">Log</p>
+    <video id="video" autoplay></video>
+    <script>
+        var canvas = document.createElement('canvas');
+        canvas.width = 800;
+        var ctx = canvas.getContext('2d');
+        const videoElem = document.getElementById("video");
+        const logElem = document.getElementById("log");
+        const startElem = document.getElementById("start");
+        const stopElem = document.getElementById("stop");
+        const socket = io('http://' + document.domain + ':' + location.port);
+        
+        // Options for getDisplayMedia()
+
+        var displayMediaOptions = {
+        video: {
+            cursor: "never"
+        },
+        audio: false
+        };
+
+        // Set event listeners for the start and stop buttons
+        startElem.addEventListener("click", function(evt) {
+        startCapture();
+        }, false);
+
+        stopElem.addEventListener("click", function(evt) {
+        stopCapture();
+        }, false);
+        //console.log = msg => logElem.innerHTML += `${msg}<br>`;
+        //console.error = msg => logElem.innerHTML += `<span class="error">${msg}</span><br>`;
+        //console.warn = msg => logElem.innerHTML += `<span class="warn">${msg}<span><br>`;
+        //console.info = msg => logElem.innerHTML += `<span class="info">${msg}</span><br>`;
+        
+        function startCapture() {
+            logElem.innerHTML = "";
+
+            try {
+                navigator.mediaDevices.getDisplayMedia(displayMediaOptions)
+                .then((stream) => {
+                    videoElem.srcObject = stream;
+                    window.stream = stream
+                    //console.log(stream)
+                    
+                })
+                .catch((err) => console.log(err))
+                //videoElem.srcObject = await stream;
+                //await socket.emit('videoFromServer', {data: 'Vasu'})
+                //console.log(URL.createObjectURL(stream))
+                dumpOptionsInfo();
+            } catch(err) {
+                console.error("Error: " + err);
+            }
+        }
+
+        videoElem.addEventListener('loadedmetadata', function() {
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+        });
+
+        video.addEventListener('play', function() {
+        var $this = this; //cache
+        (function loop() {
+            if (!$this.paused && !$this.ended) {
+            ctx.drawImage($this, 0, 0);
+            setTimeout(loop, 1000 / 30); // drawing at 30fps
+            var dataURI = canvas.toDataURL('image/jpeg');
+            //console.log(dataURI)
+            socket.emit('videoFromServer', {data:dataURI})
+            }
+        })();
+        }, 0);
+
+        //videoElm.addEventListener('playing', (event) => {
+        //    windows.stream.getVideoTracks()[0];
+        //});
+
+        function stopCapture(evt) {
+            let tracks = videoElem.srcObject.getTracks();
+
+            tracks.forEach(track => track.stop());
+            videoElem.srcObject = null;
+        }
+        
+        function dumpOptionsInfo() {
+            //const videoTrack = videoElem.srcObject.getVideoTracks()[0];
+            //
+            //console.info("Track settings:");
+            //console.info(JSON.stringify(videoTrack.getSettings(), null, 2));
+            //console.info("Track constraints:");
+            //console.info(JSON.stringify(videoTrack.getConstraints(), null, 2));
+        }
+    </script>
+</body>
+</html>
