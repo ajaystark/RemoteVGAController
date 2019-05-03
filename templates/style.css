@@ -16,3 +16,13 @@
 	color:cyan;
 	border-radius: 5%;
 }
+input[type=file]{
+	background-color: #4CAF50;
+	border: none;
+	color: white;
+	padding: 16px 32px;
+	text-decoration: none;
+	margin: 4px 2px;
+	cursor: pointer;
+
+}
