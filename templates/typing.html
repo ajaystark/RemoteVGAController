@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+   <body>
+      <h1 id="display">Someone is typing !</h1>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+      <script>
+        const socket = io('http://localhost:5000');
+        socket.on('connect', function() {
+            socket.emit('my event', {data: 'Connected!'})
+        })
+        socket.on('typing', function(msg) {
+            document.getElementById("display").innerHTML = msg
+        })
+      </script>            
+   </body>
+</html>
