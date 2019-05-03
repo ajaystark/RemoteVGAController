@@ -1,0 +1,14 @@
+&#123;% block body %&#125;
+&#123;% if session['logged_in'] %&#125;
+
+You're logged in already!
+
+&#123;% else %&#125;
+<form action="/login" method="POST">
+  <input type="username" name="username" placeholder="Username">
+<input type="password" name="password" placeholder="Password">
+<input type="submit" value="Log in">
+</form>
+&#123;% endif %&#125;
+&#123;% endblock %&#125;
+&#123;% endraw %&#125;
