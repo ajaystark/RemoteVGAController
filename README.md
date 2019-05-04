@@ -9,9 +9,9 @@ This project includes:
   - HTML
   - CSS
 
-This project was made for HackiT held in IIITD, on 3rd May 2019.
+
 <br />
-MEMBERS:
+##MEMBERS:
 <br />
 AJAY PRAKASH
 <br />
@@ -22,3 +22,7 @@ PRATHAM GUPTA
 RISHI RAJ JAIN
 <br />
 KARTIKAY SAPRA
+
+
+
+###This project was made for HackiT held in IIITD, on 3rd May 2019.
