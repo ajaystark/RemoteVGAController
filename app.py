@@ -17,7 +17,6 @@ app.config['DEFAULT_PARSERS'] = [
 UPLOAD_FOLDER = '/home/skullcrush3rx/Desktop/RemoteVGAController/static'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-
 cors = CORS(app,resources={r"/*":{"origins":"*"}})
 socketio = SocketIO(app)
 
@@ -50,6 +49,9 @@ def hello1():
 def do_admin_login():
     if request.form['password']=='password' and request.form['username']=='admin':
         session['logged_in']=True
+        print(request.form['Name'])
+        session['name'] = request.form['Name']
+        session['description'] = request.form['Description']
     else:
         flash('Wrong Password!')
     return hello()
@@ -59,9 +61,9 @@ def clientelle():
     try:
         file=open("name.txt","r")
         temp=file.read()
-        return render_template('clientelle.html', query=temp)
+        return render_template('clientelle.html', query=temp, name=session.get('name'), description=session.get('description'))
     except:
-        return render_template('clientelle.html')
+        return render_template('clientelle.html', name=session.get('name'), description=session.get('description'))
 
 @app.route('/typed')
 def typedRender():
@@ -87,7 +89,7 @@ def slave():
 
 @app.route('/clientelle2')
 def clientelle2():
-    return render_template('clientelle2.html')
+    return render_template('clientelle2.html', name=session.get('name'), description=session.get('description'))
 
 @app.route('/save', methods = ['GET', 'POST'])
 def function():
