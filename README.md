@@ -11,7 +11,7 @@ This project includes:
 
 
 <br />
-##MEMBERS:
+## MEMBERS:
 <br />
 AJAY PRAKASH
 <br />
@@ -25,4 +25,4 @@ KARTIKAY SAPRA
 
 
 
-###This project was made for HackiT held in IIITD, on 3rd May 2019.
+### This project was made for HackiT held in IIITD, on 3rd May 2019.
