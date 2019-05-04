@@ -7,7 +7,17 @@
 	<ul class="list">
 		<!-- <h1>{{query}}</h1> -->
 	</ul>
-	<embed src="/static/{{query}}" height="400px" width="800px">
-
+	<embed src="/static/{{query}}" id="embedHere" height="400px" width="800px">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+	<script>
+		const socket = io('http://' + document.domain + ':' + location.port);
+		socket.on('connect', function() {
+			socket.emit('my event', {data: 'Connected!'})
+		})
+		socket.on('reloadClient', function(msg) {
+			console.log(msg)
+			document.getElementById('embedHere').src = '/static/' + msg 
+		})
+	</script>
 	</div>
 </body>

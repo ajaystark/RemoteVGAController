@@ -56,7 +56,7 @@
     text-align: center;
   }
   
-  .centered img {
+  .centered img#speaker {
     width: 150px;
     border-radius: 50%;
   }
@@ -67,7 +67,7 @@
 
 <div class="split left">
   <div class="centered">
-    <img src="/static/ajay.jpeg">
+    <img id="speaker" src="/static/ajay.jpeg">
     <h2>Ajay Prakash</h2>
     <p>Highly qualified student at IIIT, his interests include many mathematical subjects such as Linear Algebra and Probability.</p>
   </div>
@@ -80,16 +80,11 @@
 	<ul class="list">
 		<!-- <h1>{{query}}</h1> -->
   </ul>
-  <embed src="/static/{{query}}" height="400px" width="800px" id="embedHere">
+    <h1 id="display">Someone is Sharing!</h1>
+      <img id="sharedVideo" width="800px" height="400px"/>
   </div>
 </div>
 
-<div class="splitbottom bottom">
-    <div class="centered">
-        <h2>Speaker Outlines</h2>
-        <p id="display"></p>
-    </div>
-</div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
 	<script>
 		const socket = io('http://' + document.domain + ':' + location.port);
@@ -98,14 +93,18 @@
 			socket.emit('my event', {data: 'Clientelle Connected!'})
     })
     
-		socket.on('reloadClient', function(msg) {
-			console.log(msg)
-			document.getElementById('embedHere').src = '/static/' + msg 
-    })
-    
     socket.on('typing', function(msg) {
         document.getElementById("display").innerHTML = msg
     })
+
+    const vidElement = document.getElementById('sharedVideo')
+    
+    socket.on('displayVid', function(msg) {
+      //console.log("This happened!")
+        //console.log(msg)
+        vidElement.src = msg
+    })
+
 	</script>
 
 </body>

@@ -11,8 +11,8 @@
             socket.emit('my event', {data: 'Watch Screen!'})
         })
         socket.on('displayVid', function(msg) {
-          console.log("This happened!")
-            console.log(msg)
+          //console.log("This happened!")
+            //console.log(msg)
             vidElement.src = msg
         })
       </script>            

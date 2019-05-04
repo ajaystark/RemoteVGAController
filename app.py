@@ -14,7 +14,7 @@ app.config['DEFAULT_PARSERS'] = [
 ]
 
 
-UPLOAD_FOLDER = '/Users/ajay/vga/static'
+UPLOAD_FOLDER = '/home/skullcrush3rx/Desktop/RemoteVGAController/static'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
@@ -55,7 +55,12 @@ def do_admin_login():
 
 @app.route('/clientelle')
 def clientelle():
-    return render_template('clientelle.html')
+    try:
+        file=open("name.txt","r")
+        temp=file.read()
+        return render_template('clientelle.html', query=temp)
+    except:
+        return render_template('clientelle.html')
 
 @app.route('/typed')
 def typedRender():
@@ -63,6 +68,7 @@ def typedRender():
 
 @app.route('/screen')
 def sharescreen():
+    socketio.emit('screenClient')
     return render_template('screen.html')
 
 @app.route('/watch')
@@ -71,23 +77,26 @@ def watchScreen():
 
 @app.route('/upload')
 def upload_file():
-   return render_template('first.html')
+    socketio.emit('sendClient')
+    return render_template('first.html')
 
+@app.route('/slave')
+def slave():
+    return render_template('slave.html')
 
-UPLOAD_FOLDER = '/home/skullcrush3rx/Desktop/RemoteVGAController/static'
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
+@app.route('/clientelle2')
+def clientelle2():
+    return render_template('clientelle2.html')
 
 @app.route('/save', methods = ['GET', 'POST'])
 def function():
     if request.method == 'POST':
         f = request.files['file']
         f.save(os.path.join(app.config['UPLOAD_FOLDER'],f.filename))
-        
-
         file=open("name.txt","w")
         file.write(f.filename)
         file.close()
+        socketio.emit('reloadClient', data= f.filename)
     return render_template("first.html")
 
 
@@ -95,13 +104,11 @@ def function():
 def client():
     file=open("name.txt","r")
     temp=file.read()
-    # return send_from_directory(app.config['UPLOAD_FOLDER'],filename=temp)
     return render_template("second.html",query=temp)
 
 
 if __name__ == "__main__":
     app.secret_key=os.urandom(12)
     socketio.run(app,host='0.0.0.0', debug=True)
-    #app.run(host='0.0.0.0')
 
 

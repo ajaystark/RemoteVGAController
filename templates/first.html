@@ -15,23 +15,31 @@
       text-align: center;
       text-decoration: none;
       display:table-cell;
-      font-size: 50px;
+      font-size: 20px;
       cursor: pointer;
       border-radius: 10%;
    }  
    </style>
 
    <body>
-      <form action = "http://0.0.0.0:5000/save" id="upload_form" method = "POST" 
+      <form action = "/save" id="upload_form" method = "POST" 
          enctype = "multipart/form-data">
          <input type = "file" name = "file" class="butn"/>
       </form>
+      <br>
+      Enter Text To Display: <input type="text" id="inpField" onkeyup="updateForm()" />
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
 
       <script type="text/javascript">
+        const socket = io('http://' + document.domain + ':' + location.port);
          document.getElementById("upload_form").onchange = function() {
              // submitting the form
              document.getElementById("upload_form").submit();
          };
+         function updateForm() {
+            let x = document.getElementById('inpField')
+            socket.emit('typed', {data: x.value})
+         }
        </script>
    </body>
 </html>

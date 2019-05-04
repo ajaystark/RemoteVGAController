@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+   <body>
+      <h1>Nothing is being streamed as of now. Please wait...</h1>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+      <script>
+        const socket = io('http://' + document.domain + ':' + location.port);
+        socket.on('connect', function() {
+            socket.emit('my event', {data: 'Slave Connected!'})
+        })
+        socket.on('sendClient', function() {
+            window.location.assign('/clientelle')
+        })
+        socket.on('screenClient', function() {
+          window.location.assign('/clientelle2')
+        })
+      </script>            
+   </body>
+</html>

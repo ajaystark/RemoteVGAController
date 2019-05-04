@@ -32,13 +32,13 @@
 </head>
 <body>
     <p>
+        <video id="video" autoplay hidden></video>
         <button id="start">Start Capture</button>
         &nbsp;
         <button id="stop">Stop Capture</button>
     </p>
-    <video id="video" autoplay></video>
+    Enter Text To Display: <input type="text" id="inpField" onkeyup="updateForm()" />
     <p id="log">Log</p>
-    <video id="video" autoplay></video>
     <script>
         var canvas = document.createElement('canvas');
         canvas.width = 800;
@@ -65,7 +65,9 @@
         //console.error = msg => logElem.innerHTML += `<span class="error">${msg}</span><br>`;
         //console.warn = msg => logElem.innerHTML += `<span class="warn">${msg}<span><br>`;
         //console.info = msg => logElem.innerHTML += `<span class="info">${msg}</span><br>`;
-        
+        })
+
+
         function startCapture() {
             logElem.innerHTML = "";
 
@@ -81,7 +83,7 @@
                 //videoElem.srcObject = await stream;
                 //await socket.emit('videoFromServer', {data: 'Vasu'})
                 //console.log(URL.createObjectURL(stream))
-                dumpOptionsInfo();
+                //dumpOptionsInfo();
             } catch(err) {
                 console.error("Error: " + err);
             }
@@ -92,7 +94,7 @@
             canvas.height = video.videoHeight;
         });
 
-        video.addEventListener('play', function() {
+        videoElem.addEventListener('play', function() {
         var $this = this; //cache
         (function loop() {
             if (!$this.paused && !$this.ended) {
@@ -124,6 +126,12 @@
             //console.info("Track constraints:");
             //console.info(JSON.stringify(videoTrack.getConstraints(), null, 2));
         }
+
+        function updateForm() {
+            let x = document.getElementById('inpField')
+            socket.emit('typed', {data: x.value})
+        }
+
     </script>
 </body>
 </html>
