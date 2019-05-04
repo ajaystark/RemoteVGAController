@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+   <body>
+      <h1 id="display">Someone is Sharing!</h1>
+      <img id="sharedVideo" width="800px" height="400px"/>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+      <script>
+        const vidElement = document.getElementById('sharedVideo')
+        const socket = io('http://' + document.domain + ':' + location.port);
+        socket.on('connect', function() {
+            socket.emit('my event', {data: 'Watch Screen!'})
+        })
+        socket.on('displayVid', function(msg) {
+          console.log("This happened!")
+            console.log(msg)
+            vidElement.src = msg
+        })
+      </script>            
+   </body>
+</html>
