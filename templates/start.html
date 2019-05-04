@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>ShareScreen</title>
+        <style>
+            body {
+            font-family: Arial;
+            color: Black;
+            }
+
+            .split {
+            height: 100%;
+            width: 50%;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            overflow-x: hidden;
+            padding-top: 20px;
+            }
+
+            .left {
+            left: 0;
+            background-color: white;
+            }
+
+            .right {
+            right: 0;
+            background-color: white;
+            }
+
+            .centered {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            }
+
+            .button {
+                background-color: Yellow;
+                font-size: 36 px;
+                padding: 15px 32px;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            .topcentered{
+                position: absolute;
+                top:40%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="split left">
+            <div class="topcentered">
+                <h2>Do you want to ScreenShare?</h2>
+            </div>
+            <div class="centered">
+                <a href="http://0.0.0.0:5000/hello" class="button">Option 1</a>
+                <!-- <h2>HI </h2> -->
+            </div>
+        </div>
+        <div class="split right">
+            <div class="topcentered">
+                <h2>Do you want to FileShare?</h2>
+            </div>
+            <div class="centered">
+                <a href="http://0.0.0.0:5000/clientelle" class="button">Option 2</a>
+                <!-- <h2>HELLO</h2> -->
+            </div>
+        </div>
+    </body>
+</html>

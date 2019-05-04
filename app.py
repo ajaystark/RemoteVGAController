@@ -20,7 +20,11 @@ def hello():
     if not session.get('logged_in'):
         return render_template('login.html')
     else:
-        return render_template('hello.html', name="Vasu")
+        return render_template('start.html')
+
+@app.route('/hello')
+def hello1():
+    return render_template('hello.html', name="Vasu")
 
 @app.route('/login', methods=['POST'])
 def do_admin_login():
@@ -29,6 +33,10 @@ def do_admin_login():
     else:
         flash('Wrong Password!')
     return hello()
+
+@app.route('/clientelle')
+def clientelle():
+    return render_template('clientelle.html')
 
 @app.route('/typed')
 def typedRender():
@@ -40,7 +48,7 @@ def upload_file():
    return render_template('first.html')
 
 
-UPLOAD_FOLDER = '/Users/ajay/vga/static'
+UPLOAD_FOLDER = '/home/skullcrush3rx/Desktop/RemoteVGAController/static'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
