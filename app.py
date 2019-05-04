@@ -49,6 +49,7 @@ def hello1():
 def do_admin_login():
     if request.form['password']=='password' and request.form['username']=='admin':
         session['logged_in']=True
+        print(request.form['Name'])
         session['name'] = request.form['Name']
         session['description'] = request.form['Description']
     else:
