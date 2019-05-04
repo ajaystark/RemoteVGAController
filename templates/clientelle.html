@@ -81,7 +81,15 @@
 	<ul class="list">
 		<!-- <h1>{{query}}</h1> -->
   </ul>
-  <embed src="/static/{{query}}" height="400px" width="800px" id="embedHere">
+  {% if query[-3:]=="mp3" %}
+	<audio src="/static/{{query}}" width="90%" id="embedHere" controls autoplay></audio>
+	{% elif query[-3:]=="mp4" %}
+	<video src="/static/{{query}}" id="embedHere" width="90%" controls autoplay></audio>
+	{% else %}
+		<embed src="/static/{{query}}" id="embedHere" width="90%">
+	{%endif%}
+  
+ 
   </div>
 </div>
 
