@@ -36,6 +36,7 @@ def videoFromServer(message):
 
 @app.route('/')
 def hello():
+    socketio.emit('bringBackTheSlaves')
     if not session.get('logged_in'):
         return render_template('login.html')
     else:

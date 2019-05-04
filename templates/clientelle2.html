@@ -105,6 +105,10 @@
         vidElement.src = msg
     })
 
+    socket.on('bringBackTheSlaves', function() {
+      window.location.assign('/slave')
+    })
+
 	</script>
 
 </body>

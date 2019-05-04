@@ -106,6 +106,10 @@
     socket.on('typing', function(msg) {
         document.getElementById("display").innerHTML = msg
     })
+
+    socket.on('bringBackTheSlaves', function() {
+      window.location.assign('/slave')
+    })
 	</script>
 
 </body>
