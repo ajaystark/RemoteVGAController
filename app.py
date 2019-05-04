@@ -18,7 +18,6 @@ UPLOAD_FOLDER = '/Users/ajay/vga/static'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
-
 cors = CORS(app,resources={r"/*":{"origins":"*"}})
 socketio = SocketIO(app)
 

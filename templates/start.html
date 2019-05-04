@@ -6,7 +6,7 @@
         <style>
             body {
             font-family: Arial;
-            color: Black;
+            color: #ECF0F1;
             }
 
             .split {
@@ -21,12 +21,12 @@
 
             .left {
             left: 0;
-            background-color: white;
+            background-color: #ECF0F1;
             }
 
             .right {
             right: 0;
-            background-color: white;
+            background-color: #ECF0F1;
             }
 
             .centered {
@@ -38,38 +38,51 @@
             }
 
             .button {
-                background-color: Yellow;
-                font-size: 36 px;
-                padding: 15px 32px;
-                border-radius: 5px;
+                border: 2px solid transparent;
+                background: #3498DB;
+                color: #ECF0F1;
+                font-size: 16px;
+                line-height: 25px;
+                padding: 10px 0;
+                text-decoration: none;
+                text-shadow: none;
+                border-radius: 15px;
+                box-shadow: none;
+                transition: 0.25s;
+                display: block;
+                width: 250px;
+                margin: 0 auto;
                 cursor: pointer;
             }
 
             .topcentered{
                 position: absolute;
-                top:40%;
+                top:35%;
                 left: 50%;
                 transform: translate(-50%, -50%);
                 text-align: center;
+                background-color: #3498DB;
+                padding: 20px;
+                border-radius: 25px;
             }
         </style>
     </head>
     <body>
         <div class="split left">
             <div class="topcentered">
-                <h2>Do you want to ScreenShare?</h2>
+                <h1>Do you want to ScreenShare?</h1>
             </div>
             <div class="centered">
-                <a href="http://0.0.0.0:5000/hello" class="button">Option 1</a>
+                <a href="http://0.0.0.0:5000/hello" class="button">Yes, ScreenShare</a>
                 <!-- <h2>HI </h2> -->
             </div>
         </div>
         <div class="split right">
             <div class="topcentered">
-                <h2>Do you want to FileShare?</h2>
+                <h1>Do you want to FileShare?</h1>
             </div>
             <div class="centered">
-                <a href="http://0.0.0.0:5000/clientelle" class="button">Option 2</a>
+                <a href="http://0.0.0.0:5000/clientelle" class="button">Yes, FileShare</a>
                 <!-- <h2>HELLO</h2> -->
             </div>
         </div>
