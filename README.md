@@ -9,8 +9,6 @@ This project includes:
   - HTML
   - CSS
 
-
-<br />
 ### MEMBERS-
 <br />
 AJAY PRAKASH
