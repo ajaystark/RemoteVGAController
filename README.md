@@ -12,8 +12,13 @@ This project includes:
 This project was made for HackiT held in IIITD, on 3rd May 2019.
 
 -------------------MEMBERS-------------------
+\newline
 AJAY PRAKASH
+\newline
 VASU GOEL
+\newline
 PRATHAM GUPTA
+\newline
 RISHI RAJ JAIN
+\newline
 KARTIKAY SAPRA
