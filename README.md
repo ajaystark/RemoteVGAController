@@ -10,15 +10,15 @@ This project includes:
   - CSS
 
 This project was made for HackiT held in IIITD, on 3rd May 2019.
-
--------------------MEMBERS-------------------
-\newline
+<br />
+MEMBERS:
+<br />
 AJAY PRAKASH
-\newline
+<br />
 VASU GOEL
-\newline
+<br />
 PRATHAM GUPTA
-\newline
+<br />
 RISHI RAJ JAIN
-\newline
+<br />
 KARTIKAY SAPRA
