@@ -10,7 +10,6 @@ This project includes:
   - CSS
 
 ### MEMBERS-
-<br />
 AJAY PRAKASH
 <br />
 VASU GOEL
