@@ -67,9 +67,10 @@
 
 <div class="split left">
   <div class="centered">
-    <img src="/static/ajay.jpeg">
-    <h2>Ajay Prakash</h2>
-    <p>Highly qualified student at IIIT, his interests include many mathematical subjects such as Linear Algebra and Probability.</p>
+    <img src="/static/default.png">
+    <h2>Default User</h2>
+    <p>Description of default user</p>
+    <!--<p>Highly qualified student at IIIT, his interests include many mathematical subjects such as Linear Algebra and Probability.</p>-->
   </div>
 </div>
 
@@ -80,7 +81,15 @@
 	<ul class="list">
 		<!-- <h1>{{query}}</h1> -->
   </ul>
-  <embed src="/static/{{query}}" height="400px" width="800px" id="embedHere">
+  {% if query[-3:]=="mp3" %}
+	<audio src="/static/{{query}}" width="90%" id="embedHere" controls autoplay></audio>
+	{% elif query[-3:]=="mp4" %}
+	<video src="/static/{{query}}" id="embedHere" width="90%" controls autoplay></audio>
+	{% else %}
+		<embed src="/static/{{query}}" id="embedHere" width="90%">
+	{%endif%}
+  
+ 
   </div>
 </div>
 
