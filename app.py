@@ -13,8 +13,7 @@ app.config['DEFAULT_PARSERS'] = [
     'flask.ext.api.parsers.MultiPartParser'
 ]
 
-
-UPLOAD_FOLDER = '/home/skullcrush3rx/Desktop/RemoteVGAController/static'
+UPLOAD_FOLDER = 'C://Users//jain7//Documents//GitHub//RemoteVGAController//static'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 cors = CORS(app,resources={r"/*":{"origins":"*"}})
