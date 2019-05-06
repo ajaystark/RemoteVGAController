@@ -30,4 +30,37 @@
 		})
 	</script>
 	</div>
+=======
+<head>
+		<!-- <meta http-equiv="refresh" content="5">		 -->
+
+</head>
+<body>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<ul class="list">
+		<!-- <h1>{{query}}</h1> -->
+	</ul>
+	
+	{% if query[-3:]=="mp3" %}
+	<audio src="/static/{{query}}" id="embedHere" controls autoplay></audio>
+	{% elif query[-3:]=="mp4" %}
+	<video src="/static/{{query}}" id="embedHere" height="400px" width="800px" controls autoplay></audio>
+	{% else %}
+		<embed src="/static/{{query}}" id="embedHere" max-width="800px">
+	{%endif%}
+
+
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+	<script>
+		const socket = io('http://' + document.domain + ':' + location.port);
+		socket.on('connect', function() {
+			socket.emit('my event', {data: 'Connected!'})
+		})
+		socket.on('reloadClient', function(msg) {
+			//console.log(msg)
+			document.getElementById('embedHere').src = '/static/' + msg 
+		})
+	</script>
+	</div>
 </body>
