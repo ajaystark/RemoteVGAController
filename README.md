@@ -11,9 +11,9 @@ This project includes:
   - CSS
 
 Team Members:
- - AJAY PRAKASH
- - VASU GOEL
- - PRATHAM GUPTA
- - RISHI RAJ JAIN
- - KARTIKAY SAPRA
+ - Ajay Prakash
+ - Vasu Goel
+ - Pratham Gupta
+ - Rishi Raj Jain
+ - Kartikay Sapra
 # This project was made for HackiT held in IIITD, on 3rd May 2019.
