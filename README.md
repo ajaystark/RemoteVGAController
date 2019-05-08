@@ -10,17 +10,10 @@ This project includes:
   - HTML
   - CSS
 
-### MEMBERS-
-AJAY PRAKASH
-<br />
-VASU GOEL
-<br />
-PRATHAM GUPTA
-<br />
-RISHI RAJ JAIN
-<br />
-KARTIKAY SAPRA
-
-
-
-### This project was made for HackiT held in IIITD, on 3rd May 2019.
+Team Members:
+ - AJAY PRAKASH
+ - VASU GOEL
+ - PRATHAM GUPTA
+ - RISHI RAJ JAIN
+ - KARTIKAY SAPRA
+# This project was made for HackiT held in IIITD, on 3rd May 2019.
