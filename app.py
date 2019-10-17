@@ -105,21 +105,33 @@ def do_admin_login():
         #print('\n\n\nHERE!\n\n\n')
         password = request.form['password']
         email = request.form['email']
-        session['logged_in']=True
+        # if(password==):
+        #     flash('Wrong Password!')
         checkUser = User.query.filter_by(email=email).first()
         if checkUser is None:
             flash('This Email ID Doesn\'t exist')
             return redirect(url_for('hello'))
         else:
             if checkUser.check_password(password=password):
+                session['logged_in']=True
                 current_user = login_user(checkUser)
                 #print(request.form['email'], request.form['password'])
                 session['name'] = "<<Fix Name Error>> "#current_user.query.get(name)
                 session['description'] = request.form['Description']
                 return redirect(url_for('hello'))
+            else:
+                flash('Wrong Password!')
+                return redirect(url_for('hello'))
     else:
         flash('Wrong Password!')
         return redirect(url_for('hello'))
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    session['logged_in']=False
+    return redirect('/')
 
 @app.route('/createAccount', methods=['GET'])
 def createUserAccount():
