@@ -1,4 +1,4 @@
-#!/home/vasu/RemoteVGAController/env/bin/python3
+#!/home/vasu/RemoteVGAController/RemoteVGAController/env/bin/python3
 
 # -*- coding: utf-8 -*-
 import re
