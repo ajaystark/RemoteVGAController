@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-Strategy Joel Watson Solutions.pdf
-=======
-soundtrack2.mp3
->>>>>>> d225627d7a0ad865fcfc25468e9737c2407cac50
+Top-Level Package.png
