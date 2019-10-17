@@ -1,10 +1,5 @@
 env/
 .DS_Store
-<<<<<<< HEAD
 .vscode/
 *.pyc
 
-=======
-.vscode
-/__pycache__
->>>>>>> 21e05af0c836ed17d0a3cb7cac5aa3c607211fe2
