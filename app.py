@@ -181,9 +181,6 @@ def upload_file():
     socketio.emit('sendClient')
     return render_template('first.html')
 
-@app.route('/slave')
-def slave():
-    return render_template('slave.html')
 
 @app.route('/clientelle2')
 def clientelle2():
