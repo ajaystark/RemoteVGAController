@@ -66,8 +66,9 @@ def videoFromServer(message):
 def load_user(user_id):
     return User.get(user_id)
 
-def create_user(email, username, password, name):
-    user_datastore.create_user(email=email, password=generate_password_hash(password, method='sha256'), username=username, name=name)
+def create_user(email, password, name):
+    print('create user called')
+    user_datastore.create_user(email=email, password=generate_password_hash(password, method='sha256'), name=name)
     db_session.commit()
 
 
@@ -112,16 +113,14 @@ def createUserAccount():
 
 @app.route('/register', methods=['POST', 'GET'])
 def do_admin_register():
-    signup_form = SignupForm(request.form)
     if (request.method == 'POST'):
-        if signup_form.validate():
-            name = request.form.get('name')
-            email = request.form.get('email')
-            password = request.form.get('password')
-            existing_user = User.query.filter_by(email=email).first()
-            if existing_user is None:
-                create_user(email=request.form['email'], username=request.form['username'], password=request.form['password'], name=request.form['name'])
-                return hello()
+        name = request.form.get('name')
+        email = request.form.get('email')
+        password = request.form.get('password')
+        existing_user = User.query.filter_by(email=email).first()
+        if existing_user is None:
+            create_user(email=request.form['email'], password=request.form['password'], name=request.form['name'])
+            return hello()
     return createUserAccount()
 
 @app.route('/clientelle')
