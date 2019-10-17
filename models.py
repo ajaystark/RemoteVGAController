@@ -3,6 +3,7 @@ from flask_security import UserMixin, RoleMixin
 from sqlalchemy import create_engine
 from sqlalchemy.orm import relationship, backref
 from sqlalchemy import Boolean, Column, Integer, String, DateTime, Boolean, ForeignKey
+from werkzeug.security import check_password_hash
 
 class RolesUsers(Base):
     __tablename__ = 'roles_users'
@@ -31,3 +32,6 @@ class User(Base, UserMixin):
     confirmed_at = Column(DateTime())
     roles = relationship('Role', secondary='roles_users',
                          backref=backref('users', lazy='dynamic'))
+
+    def check_password(self, password):
+        return check_password_hash(self.password, password)
