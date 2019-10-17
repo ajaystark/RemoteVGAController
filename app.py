@@ -1,4 +1,4 @@
-from flask import Flask, render_template, flash, redirect, render_template, request, session, abort,send_from_directory
+from flask import Flask, render_template, flash, redirect, render_template, request, session, abort,send_from_directory, url_for
 from flask_socketio import SocketIO, emit
 from flask_cors import CORS, cross_origin
 from flask_security import Security, login_required, SQLAlchemySessionUserDatastore
@@ -62,14 +62,19 @@ def videoFromServer(message):
     Auth methods Start
 """
 
-@login_manager.user_loader
-def load_user(user_id):
-    return User.get(user_id)
-
 def create_user(email, password, name):
     print('create user called')
     user_datastore.create_user(email=email, password=generate_password_hash(password, method='sha256'), name=name)
     db_session.commit()
+
+@login_manager.user_loader
+def load_user(user_id):
+    """Check if user is logged-in on every page load."""
+    if user_id is not None:
+        print(user_id)
+        session['logged_in'] = True
+        return User.query.get(user_id)
+    return None
 
 
 """
@@ -93,19 +98,28 @@ def hello():
 def hello1():
     return render_template('hello.html', name="Vasu")
 
-@app.route('/login', methods=['POST'])
+@app.route('/login_user', methods=['POST', 'GET'])
 def do_admin_login():
+    #print('LOGIN!!!!\n\n')
     if (request.method == 'POST'):
-        if request.form['password']=='password' and request.form['emailID']=='admin':
-            session['logged_in']=True
-            print(request.form['Name'])
-            session['name'] = request.form['Name']
-            session['description'] = request.form['Description']
+        #print('\n\n\nHERE!\n\n\n')
+        password = request.form['password']
+        email = request.form['email']
+        session['logged_in']=True
+        checkUser = User.query.filter_by(email=email).first()
+        if checkUser is None:
+            flash('This Email ID Doesn\'t exist')
+            return redirect(url_for('hello'))
         else:
-            flash('Wrong Password!')
-        return hello()
+            if checkUser.check_password(password=password):
+                current_user = login_user(checkUser)
+                #print(request.form['email'], request.form['password'])
+                session['name'] = "<<Fix Name Error>> "#current_user.query.get(name)
+                session['description'] = request.form['Description']
+                return redirect(url_for('hello'))
     else:
-        return render_template('login.html')
+        flash('Wrong Password!')
+        return redirect(url_for('hello'))
 
 @app.route('/createAccount', methods=['GET'])
 def createUserAccount():
@@ -120,8 +134,11 @@ def do_admin_register():
         existing_user = User.query.filter_by(email=email).first()
         if existing_user is None:
             create_user(email=request.form['email'], password=request.form['password'], name=request.form['name'])
-            return hello()
-    return createUserAccount()
+            return redirect(url_for('hello'))
+        else:
+            flash('Wrong Password!')
+            return redirect(url_for('createUserAccount'))
+    return redirect(url_for('createUserAccount'))
 
 @app.route('/clientelle')
 def clientelle():
