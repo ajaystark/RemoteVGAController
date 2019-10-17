@@ -1,7 +1,7 @@
 <html>
 	<head>
       <link rel="stylesheet" type="text/css" href="style.css">
-      
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
    </head>
 
    <style> 
@@ -33,12 +33,16 @@
    </style>
 
    <body>
-      <form action = "/save" id="upload_form" method = "POST" 
-         enctype = "multipart/form-data">
-         <input type = "file" name = "file" class="butn"/>
-      </form>
+      <div style="background: #2980b9; height:100%; widows: 100%;" class="text-center d-flex flex-column justify-content-center">
+         <form action = "/save" id="upload_form" method = "POST" 
+            enctype = "multipart/form-data">
+            <input type = "file" name = "file"/>
+            <!-- <input type="submit" name="" id="" class="btn btn-primary"> -->
+         </form>
+      </div>
+      
       <br>
-      Enter Text To Display: <input type="text" id="inpField" onkeyup="updateForm()" />
+      <!-- Enter Text To Display: <input type="text" id="inpField" onkeyup="updateForm()" /> -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
 
       <script type="text/javascript">

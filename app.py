@@ -29,7 +29,7 @@ def create_db():
     init_db()
     db_session.commit()
 
-UPLOAD_FOLDER = './'
+UPLOAD_FOLDER = './static'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 login_manager = LoginManager()
 login_manager.init_app(app)

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--   <script src="https://cdn.tinymce.com/4/tinymce.min.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.9.4/tinymce.min.js"></script>
+  <script>tinymce.init({ selector:'textarea' });</script>
+</head>
+<body>
+  <textarea id="text-area">Easy! You should check out MoxieManager!</textarea>
+  <button class="btn-gene">hello</button>
+
+</body>
+</html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+        $('.btn-gene').click(function(){
+            //$("#text-gene").text($("#text-box-gene").val());
+            console.log($("#text-area").text())
+        });
+</script>
