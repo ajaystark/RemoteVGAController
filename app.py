@@ -158,6 +158,7 @@ def clientelle():
     try:
         file=open("name.txt","r")
         temp=file.read()
+        file.close()
         return render_template('clientelle.html', query=temp, name=session.get('name'), description=session.get('description'))
     except:
         return render_template('clientelle.html', name=session.get('name'), description=session.get('description'))
@@ -203,6 +204,7 @@ def function():
 def client():
     file=open("name.txt","r")
     temp=file.read()
+    file.close()
     return render_template("second.html",query=temp)
 
 @app.route("/check",methods=['GET'])
@@ -210,7 +212,10 @@ def check():
     file=open("name.txt","r")
     temp=file.read()
     name=request.args.get('file')
-    if name == temp:
+    file.close()
+    print(name)
+    print(temp)
+    if name != temp:
         return '1'
     else:
         return '0'
