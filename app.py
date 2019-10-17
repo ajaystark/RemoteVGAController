@@ -117,7 +117,7 @@ def do_admin_login():
                 current_user = login_user(checkUser)
                 #print(request.form['email'], request.form['password'])
                 session['name'] = "<<Fix Name Error>> "#current_user.query.get(name)
-                session['description'] = request.form['Description']
+                # session['description'] = request.form['Description']
                 return redirect(url_for('hello'))
             else:
                 flash('Wrong Password!')
@@ -153,7 +153,7 @@ def do_admin_register():
     return redirect(url_for('createUserAccount'))
 
 
-@app.route('/clientelle')
+@app.route('/view')
 def clientelle():
     try:
         file=open("name.txt","r")
@@ -207,6 +207,17 @@ def client():
     file=open("name.txt","r")
     temp=file.read()
     return render_template("second.html",query=temp)
+
+@app.route("/check",methods=['GET'])
+def check():
+    file=open("name.txt","r")
+    temp=file.read()
+    name=request.args.get('file')
+    if name == temp:
+        return '1'
+    else:
+        return '0'
+
 
 """
     App Routes End

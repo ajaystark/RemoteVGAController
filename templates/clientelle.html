@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
 <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 </head>
 <style>
@@ -9,6 +10,9 @@
     }
 </style>
 <body>
+    <div id="div1">
+        hello
+    </div>
     <div style="height: 100%; width:100%;">
         {% if query[-3:]=="mp3" %}
         <audio src="/static/{{query}}" width="90%" id="embedHere" controls autoplay></audio>
@@ -19,5 +23,16 @@
         {%endif%}
 
     </div>
-
 </body>
+<script>
+    var check_url="/check?file="+"{{query}}"
+    $(document).ready(function(){
+      setInterval(function(){
+        $.ajax({url: window.check_url, success: function(result){
+            if(result=='1'){
+                window.reload()
+            }
+        }});
+      },10000);
+    });
+</script>
