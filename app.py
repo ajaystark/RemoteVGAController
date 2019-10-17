@@ -140,6 +140,7 @@ def do_admin_register():
             return redirect(url_for('createUserAccount'))
     return redirect(url_for('createUserAccount'))
 
+
 @app.route('/clientelle')
 def clientelle():
     try:
@@ -163,6 +164,7 @@ def watchScreen():
     return render_template('watchScreen.html')
 
 @app.route('/upload')
+@login_required
 def upload_file():
     socketio.emit('sendClient')
     return render_template('first.html')
@@ -176,6 +178,7 @@ def clientelle2():
     return render_template('clientelle2.html', name=session.get('name'), description=session.get('description'))
 
 @app.route('/save', methods = ['GET', 'POST'])
+@login_required
 def function():
     if request.method == 'POST':
         f = request.files['file']
@@ -198,5 +201,5 @@ def client():
 """
 
 if __name__ == "__main__":
-    app.secret_key=os.urandom(16)
+    app.secret_key=os.urandom(12)
     socketio.run(app,host='0.0.0.0', debug=True)
