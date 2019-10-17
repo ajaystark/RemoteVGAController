@@ -3,14 +3,21 @@
 <head>
 
 </head>
+<style>
+    html, body {
+      height: 100%;
+    }
+</style>
 <body>
-    
-{% if query[-3:]=="mp3" %}
-<audio src="/static/{{query}}" width="90%" id="embedHere" controls autoplay></audio>
-{% elif query[-3:]=="mp4" %}
-<video src="/static/{{query}}" id="embedHere" width="100%" controls autoplay></audio>
-{% else %}
-    <embed src="/static/{{query}}" id="embedHere" width="100%" height="100%">
-{%endif%}
+    <div style="height: 100%; width:100%;">
+        {% if query[-3:]=="mp3" %}
+        <audio src="/static/{{query}}" width="90%" id="embedHere" controls autoplay></audio>
+        {% elif query[-3:]=="mp4" %}
+        <video src="/static/{{query}}" id="embedHere" width="100%" controls autoplay></audio>
+        {% else %}
+            <embed src="/static/{{query}}" id="embedHere" width="100%" height="100%">
+        {%endif%}
+
+    </div>
 
 </body>
