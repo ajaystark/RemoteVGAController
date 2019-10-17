@@ -117,7 +117,7 @@ def do_admin_login():
                 current_user = login_user(checkUser)
                 #print(request.form['email'], request.form['password'])
                 session['name'] = "<<Fix Name Error>> "#current_user.query.get(name)
-                session['description'] = request.form['Description']
+                # session['description'] = request.form['Description']
                 return redirect(url_for('hello'))
             else:
                 flash('Wrong Password!')
@@ -181,9 +181,6 @@ def upload_file():
     socketio.emit('sendClient')
     return render_template('first.html')
 
-@app.route('/slave')
-def slave():
-    return render_template('slave.html')
 
 @app.route('/clientelle2')
 def clientelle2():

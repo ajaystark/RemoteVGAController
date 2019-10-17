@@ -1,16 +1,45 @@
 
 <!DOCTYPE html>
 <head>
-
+        <title>Client</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='util.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='/vendor/bootstrap/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='/fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='/vendor/animate/animate.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='/vendor/css-hamburgers/hamburgers.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='/vendor/select2/select2.min.css') }}">
+        <style>
+            .emm{
+                padding-top: 0;
+                height: 100vh;
+                width: 100vh;
+            }
+            .emm2{
+                padding-top: 0;
+                max-height: 100vh;
+                max-width: 100vh;
+            }
+        </style>
 </head>
+
 <body>
-    
+
 {% if query[-3:]=="mp3" %}
 <audio src="/static/{{query}}" width="90%" id="embedHere" controls autoplay></audio>
 {% elif query[-3:]=="mp4" %}
 <video src="/static/{{query}}" id="embedHere" width="100%" controls autoplay></audio>
+{% elif query[-3:]=="pdf" %}
+<div class="container-login100" style="padding-top: 0; padding-bottom: 0;">
+    <embed src="/static/{{query}}" class="emm"></iframe>
+</div>
 {% else %}
-    <embed src="/static/{{query}}" id="embedHere" width="100%" height="100%">
+<div class="container-login100" style="padding-top: 0; padding-bottom: 0;">
+    <embed src="/static/{{query}}" class="emm2"></iframe>
+</div>
 {%endif%}
 
 </body>

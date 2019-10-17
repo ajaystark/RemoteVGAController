@@ -3,6 +3,16 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>ShareScreen</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='util.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='/vendor/bootstrap/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='/fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='/vendor/animate/animate.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='/vendor/css-hamburgers/hamburgers.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='/vendor/select2/select2.min.css') }}">
         <style>
             body {
             font-family: Arial;
@@ -21,12 +31,12 @@
 
             .left {
             left: 0;
-            background-color: #ECF0F1;
+            /* background-color: #ECF0F1; */
             }
 
             .right {
             right: 0;
-            background-color: #ECF0F1;
+            /* background-color: #ECF0F1; */
             }
 
             .centered {
@@ -68,22 +78,26 @@
         </style>
     </head>
     <body>
-        <div class="split left">
-            <div class="topcentered">
-                <h1>Do you want to ScreenShare?</h1>
+        <div class="container-login100">
+            <div class="container">
+            <div class="split left">
+                <div class="topcentered">
+                    <h1>Do you want to ScreenShare?</h1>
+                </div>
+                <div class="centered">
+                    <a href="/screen" class="button">Yes, ScreenShare</a>
+                    <!-- <h2>HI </h2> -->
+                </div>
             </div>
-            <div class="centered">
-                <a href="/screen" class="button">Yes, ScreenShare</a>
-                <!-- <h2>HI </h2> -->
+            <div class="split right">
+                <div class="topcentered">
+                    <h1>Do you want to FileShare?</h1>
+                </div>
+                <div class="centered">
+                    <a href="/upload" class="button">Yes, FileShare</a>
+                    <!-- <h2>HELLO</h2> -->
+                </div>
             </div>
-        </div>
-        <div class="split right">
-            <div class="topcentered">
-                <h1>Do you want to FileShare?</h1>
-            </div>
-            <div class="centered">
-                <a href="/upload" class="button">Yes, FileShare</a>
-                <!-- <h2>HELLO</h2> -->
             </div>
         </div>
     </body>
