@@ -215,10 +215,7 @@ def check():
     file.close()
     print(name)
     print(temp)
-    if name != temp:
-        return '1'
-    else:
-        return '0'
+    return 2
 
 
 """
