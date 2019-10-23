@@ -5,12 +5,12 @@ By keeping in view a master-slave system, the notable thing is that the master i
 Master system has the ability to upload files, share audios, videos, and do screen and application sharing. 
 
 This project includes:
-  - Flask
-  - JavaScript
-  - HTML
-  - CSS
-  - SocketIO
-  - Python Pillow for images
+- Flask
+- JavaScript
+- HTML
+- CSS
+- SocketIO
+- Python Pillow for images
 
 Team Members:
  - Ajay Prakash
@@ -18,4 +18,5 @@ Team Members:
  - Pratham Gupta
  - Rishi Raj Jain
  - Kartikay Sapra
+
 # This project was made for HackiT held in IIITD, on 3rd May 2019
