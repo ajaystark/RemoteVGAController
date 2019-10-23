@@ -9,6 +9,8 @@ This project includes:
   - JavaScript
   - HTML
   - CSS
+  - SocketIO
+  - Python Pillow for images
 
 Team Members:
  - Ajay Prakash
@@ -16,4 +18,4 @@ Team Members:
  - Pratham Gupta
  - Rishi Raj Jain
  - Kartikay Sapra
-# This project was made for HackiT held in IIITD, on 3rd May 2019.
+# This project was made for HackiT held in IIITD, on 3rd May 2019
