@@ -11,7 +11,7 @@ python-engineio==3.5.1
 python-socketio==3.1.2
 requests==2.21.0
 six==1.12.0
-urllib3==1.24.3
+urllib3==1.26.5
 Werkzeug==0.15.2
 sqlalchemy==1.3.10
 flask_security==3.0.0
